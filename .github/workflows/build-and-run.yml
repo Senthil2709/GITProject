@@ -1,0 +1,22 @@
+name: Build and Run Spring Boot
+
+on:
+  push:
+    branches: [ "**" ]   # triggers on every commit to any branch
+
+jobs:
+  build-and-run:
+    runs-on: self-hosted   # 👈 this targets YOUR local machine runner
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Build with Maven
+        run: mvn clean package -DskipTests
+
+
+     # - name: Run Spring Boot app
+     #   run: |
+     #     nohup java -jar target/*.jar > app.log 2>&1 &
+     #     echo "App started. Check app.log for output."
