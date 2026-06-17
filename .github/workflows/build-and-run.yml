@@ -22,5 +22,10 @@ jobs:
      #     echo "App started. Check app.log for output."
      
       - name: Run Spring Boot app
-        run: D:\Software\apache-maven-3.9.2-bin\apache-maven-3.9.2\bin\mvn spring-boot:run &
+  run: |
+    Start-Process -FilePath "D:\Software\apache-maven-3.9.2-bin\apache-maven-3.9.2\bin\mvn.cmd" `
+      -ArgumentList "spring-boot:run" `
+      -RedirectStandardOutput "app.log" `
+      -RedirectStandardError "app-error.log" `
+      -NoNewWindow
           
